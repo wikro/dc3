@@ -27,10 +27,10 @@
     </nav>
     <main class="container">
       <details v-for="target in activeTargets">
-        <summary role="button" class="outline">[{{ target.health.toUpperCase() }}] {{ target.labels.instance }}</summary>
+        <summary role="button" class="outline"><strong v-bind:class="target.health.toLowerCase()">{{ target.health.toUpperCase() }}</strong> {{ target.labels.instance }}</summary>
         <ul>
           <template v-for="(value, name) in target.labels">
-            <li v-if="name !== 'instance'">{{ name }} = {{ value }}</li>
+            <li v-if="name !== 'instance'"><strong>{{ name }}</strong> = {{ value }}</li>
           </template>
         </ul>
       </details>

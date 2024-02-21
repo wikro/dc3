@@ -30,11 +30,37 @@ body > main > .grid {
   grid-template-columns: 1fr 1fr 1fr;
 }
 
-body > main > .grid article > ul,
-body > main > .grid article > ul li {
+body > main > details > summary > strong {
+  margin-right: var(--pico-form-element-spacing-horizontal);
+}
+
+body > main > details > summary > strong.up {
+  color: var(--pico-color-jade-500);
+}
+
+body > main > details > summary > strong.down {
+  color: var(--pico-color-orange-500);
+}
+
+body > main > details > summary > strong.unknown {
+  color: var(--pico-color-red-500);
+}
+
+body > main > details > ul,
+body > main > details > ul li {
   padding-left: 0;
   margin-left: 0;
   list-style-type: none;
+}
+
+body > main > details > ul li {
+  padding: 5px 10px 5px 10px;
+  margin-right: 10px;
+  display: inline-block;
+  border-radius: var(--pico-border-radius);
+  background-color: var(--pico-primary-background);
+  color: var(--pico-primary-inverse);
+  font-size: 0.8rem;
 }
 
 body > main > section > footer a {
