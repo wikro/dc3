@@ -1,4 +1,4 @@
-module.exports = async function(data) {
+module.exports = function(data) {
     let jobs = data.targets.map(target => {
 
         let labels = target.labels.reduce((total, label) => {
