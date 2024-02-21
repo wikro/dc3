@@ -46,6 +46,10 @@ body > main > details > summary > strong.unknown {
   color: var(--pico-color-zinc-500);
 }
 
+body > main > details > ul {
+  margin-bottom: calc(var(--pico-spacing) * 2);
+}
+
 body > main > details > ul,
 body > main > details > ul li {
   padding-left: 0;
