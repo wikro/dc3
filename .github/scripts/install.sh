@@ -21,5 +21,8 @@ cp -R /tmp/deploy/api/* /opt/directus/
 
 chmod -R ug+rwX,o+rX /opt/directus/*
 
+cd /opt/directus
+sudo docker compose up -d
+
 # Clean up
 rm -rf /tmp/web.tar /tmp/api.tar /tmp/deploy/ /tmp/install.sh
