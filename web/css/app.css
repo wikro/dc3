@@ -59,7 +59,8 @@ body > main > details > ul li {
 
 body > main > details > ul li {
   padding: 5px 10px 5px 10px;
-  margin-right: 10px;
+  margin-right: var(--pico-spacing);
+  margin-bottom: var(--pico-spacing);
   display: inline-block;
   border-radius: var(--pico-border-radius);
   background-color: var(--pico-primary-background);
