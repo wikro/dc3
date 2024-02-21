@@ -1,0 +1,47 @@
+@charset "UTF-8";
+
+@media (max-width: 576px) {
+  body > nav {
+    display: block;
+  }
+
+  body > nav > ul {
+    margin: calc(var(--pico-nav-element-spacing-horizontal) * -1);
+  }
+}
+
+body > nav li > h1 {
+  margin: 0;
+  font-size: 3rem;
+  color: #d81b60;
+}
+
+body > nav li > a > img {
+  margin-bottom: 4px;
+  height: 24px;
+  color: #fff;
+}
+
+body > [contenteditable="true"]:hover {
+  cursor: text;
+}
+
+body > main > .grid {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+body > main > .grid article > ul,
+body > main > .grid article > ul li {
+  padding-left: 0;
+  margin-left: 0;
+  list-style-type: none;
+}
+
+body > main > section > footer a {
+  margin-right: 10px;
+  font-size: 0.8rem;
+}
+
+body > main > section > footer a::before {
+  content:'#';
+}

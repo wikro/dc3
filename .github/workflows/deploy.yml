@@ -1,0 +1,25 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - run: /bin/bash ./.github/scripts/deploy.sh
+        env:
+          DEPLOY_HOST: "${{ secrets.DEPLOY_HOST }}"
+          DEPLOY_USER: "${{ secrets.DEPLOY_USER }}"
+          PRIVATE_KEY: "${{ secrets.PRIVATE_KEY }}"
+          DIRECTUS_KEY: "${{ secrets.DIRECTUS_KEY }}"
+          DIRECTUS_SECRET: "${{ secrets.DIRECTUS_SECRET }}"
+          DIRECTUS_ADMIN_EMAIL: "${{ secrets.DIRECTUS_ADMIN_EMAIL }}"
+          DIRECTUS_ADMIN_PASSWORD: "${{ secrets.DIRECTUS_ADMIN_PASSWORD }}"
+          DIRECTUS_DB_USER: "${{ secrets.DIRECTUS_DB_USER }}"
+          DIRECTUS_DB_PASSWORD: "${{ secrets.DIRECTUS_DB_PASSWORD }}"
+          DIRECTUS_DB_DATABASE: "${{ secrets.DIRECTUS_DB_DATABASE }}"
