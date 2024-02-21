@@ -43,7 +43,7 @@ body > main > details > summary > strong.down {
 }
 
 body > main > details > summary > strong.unknown {
-  color: var(--pico-color-red-500);
+  color: var(--pico-color-zinc-500);
 }
 
 body > main > details > ul,
