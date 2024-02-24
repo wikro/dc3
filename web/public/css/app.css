@@ -1,0 +1,74 @@
+@charset "UTF-8";
+
+@media (max-width: 576px) {
+  nav {
+    display: block;
+  }
+
+  nav > ul {
+    margin: calc(var(--pico-nav-element-spacing-horizontal) * -1);
+  }
+}
+
+nav li > h1 {
+  margin: 0;
+  font-size: 3rem;
+  color: #d81b60;
+}
+
+nav li > a > img {
+  margin-bottom: 4px;
+  height: 24px;
+  color: #fff;
+}
+
+[contenteditable="true"]:hover {
+  cursor: text;
+}
+
+.grid {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+summary > strong {
+  margin-right: var(--pico-form-element-spacing-horizontal);
+}
+
+summary > strong.up {
+  color: var(--pico-color-jade-500);
+}
+
+summary > strong.down {
+  color: var(--pico-color-orange-500);
+}
+
+summary > strong.unknown {
+  color: var(--pico-color-zinc-500);
+}
+
+details > ul,
+details > ul li {
+  padding-left: 0;
+  margin-left: 0;
+  list-style-type: none;
+}
+
+details > ul li {
+  padding: 5px 10px 5px 10px;
+  margin-right: var(--pico-spacing);
+  margin-bottom: var(--pico-spacing);
+  display: inline-block;
+  border-radius: var(--pico-border-radius);
+  background-color: var(--pico-primary-background);
+  color: var(--pico-primary-inverse);
+  font-size: 0.8rem;
+}
+
+section > footer a {
+  margin-right: 10px;
+  font-size: 0.8rem;
+}
+
+section > footer a::before {
+  content:'#';
+}
