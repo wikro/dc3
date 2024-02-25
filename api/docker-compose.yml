@@ -6,7 +6,7 @@ volumes:
 
 services:
   postgresql:
-    image: postgres:16-alpine
+    image: postgres:16.2-alpine
     ports:
       - 127.0.0.1:5432:5432
     volumes:
@@ -17,7 +17,7 @@ services:
     restart: unless-stopped
     
   directus:
-    image: directus/directus:10.9.2
+    image: directus/directus:10.9.3
     depends_on:
       - postgresql
     ports:
