@@ -40,7 +40,7 @@ if [ -f pb.tar ]; then
   cp -R deploy/pb/* /opt/pocketbase/
 
   chmod -R ug+rwX,o+rX /opt/directus
-  sudo systemctl restart pocketbase
+  sudo systemctl reload pocketbase
 fi
 
 # Clean up
