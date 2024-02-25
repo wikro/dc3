@@ -44,8 +44,6 @@ run_install () {
   ssh "$DEPLOY_SSH" "/bin/bash /tmp/${SCRIPT}"
 }
 
-deploy () {
-  setup_ssh
-  pack_and_send "$1"
-  run_install "$1"
-}
+setup_ssh
+pack_and_send "$1"
+run_install "$1"

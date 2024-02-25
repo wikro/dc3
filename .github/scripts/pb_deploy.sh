@@ -1,5 +1,3 @@
 #!/bin/bash
 
-source `dirname "$0"`/tools/deploy_functions.sh
-
-deploy pb
+source `dirname "$0"`/tools/deploy.sh pb
