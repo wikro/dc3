@@ -1,9 +1,11 @@
-name: Deploy
+name: Deploy API
 
 on:
   push:
     branches:
       - master
+    paths:
+      - "api/**"
 
 jobs:
   deploy:
@@ -11,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - run: /bin/bash ./.github/scripts/deploy.sh
+      - run: /bin/bash ./.github/scripts/deploy.sh api
         env:
           DEPLOY_HOST: "${{ secrets.DEPLOY_HOST }}"
           DEPLOY_USER: "${{ secrets.DEPLOY_USER }}"

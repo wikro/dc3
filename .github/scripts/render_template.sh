@@ -1,5 +1,7 @@
 #/bin/bash
 
+# Replaces any occurrences of '{{ VARIABLE }}' in a text file with environmental variable 'VARIABLE'
+
 awk '{
     while(match($0, /{{[^{}]+}}/)) {
         mustasch = substr($0, RSTART, RLENGTH)
