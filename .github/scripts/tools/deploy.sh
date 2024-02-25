@@ -36,11 +36,11 @@ pack_and_send () {
 
 run_install () {
   local SCRIPT="${1}_install.sh"
-  local PATH=".github/scripts/${SCRIPT}"
+  local SCRIPT_PATH=".github/scripts/${SCRIPT}"
 
-  if [ ! -f "$PATH" ]; then exit 1; fi
+  if [ ! -f "$SCRIPT_PATH" ]; then exit 1; fi
 
-  scp "$PATH" "$DEPLOY_SSH":/tmp/
+  scp "$SCRIPT_PATH" "$DEPLOY_SSH":/tmp/
   ssh "$DEPLOY_SSH" "/bin/bash /tmp/${SCRIPT}"
 }
 
