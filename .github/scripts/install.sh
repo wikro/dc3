@@ -37,11 +37,11 @@ if [ -f pb.tar ]; then
   rm -rf /opt/pocketbase/*
   rm -rf /opt/pocketbase/.*
 
-  cp -R deploy/pocketbase/* /opt/pocketbase/
+  cp -R deploy/pb/* /opt/pocketbase/
 
   chmod -R ug+rwX,o+rX /opt/directus
   sudo systemctl restart pocketbase
 fi
 
 # Clean up
-rm -rf web.tar api.tar pb.tar deploy/ install.sh
+rm -rf web.tar api.tar pb.tar md5sums.txt deploy/ install.sh
