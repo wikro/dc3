@@ -1,13 +1,12 @@
 name: Deploy PocketBase
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - master
     paths:
       - "pb/**"
-      - ".github/scripts/pb_**"
-      - ".github/workflows/pb_**"
 
 jobs:
   deploy:

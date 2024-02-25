@@ -1,13 +1,12 @@
 name: Deploy API
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - master
     paths:
       - "api/**"
-      - ".github/scripts/api_**"
-      - ".github/workflows/api_**"
 
 jobs:
   deploy:

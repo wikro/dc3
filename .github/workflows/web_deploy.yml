@@ -1,13 +1,12 @@
 name: Deploy Web
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - master
     paths:
       - "web/**"
-      - ".github/scripts/web_**"
-      - ".github/workflows/web_**"
 
 jobs:
   deploy:
