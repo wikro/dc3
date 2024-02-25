@@ -15,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - run: /bin/bash source .github/scripts/pb_deploy.sh
+      - run: /bin/bash .github/scripts/pb_deploy.sh
         env:
           DEPLOY_HOST: "${{ secrets.DEPLOY_HOST }}"
           DEPLOY_USER: "${{ secrets.DEPLOY_USER }}"
