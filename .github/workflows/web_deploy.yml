@@ -1,11 +1,13 @@
-name: Deploy PocketBase
+name: Deploy Web
 
 on:
   push:
     branches:
       - master
     paths:
-      - "pb/**"
+      - "web/**"
+      - ".github/scripts/web_**"
+      - ".github/workflows/web_**"
 
 jobs:
   deploy:
@@ -13,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - run: /bin/bash ./.github/scripts/deploy.sh pb
+      - run: /bin/bash ./.github/scripts/web_deploy.sh
         env:
           DEPLOY_HOST: "${{ secrets.DEPLOY_HOST }}"
           DEPLOY_USER: "${{ secrets.DEPLOY_USER }}"

@@ -6,6 +6,8 @@ on:
       - master
     paths:
       - "api/**"
+      - ".github/scripts/api_**"
+      - ".github/workflows/api_**"
 
 jobs:
   deploy:
@@ -13,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - run: /bin/bash ./.github/scripts/deploy.sh api
+      - run: /bin/bash ./.github/scripts/api_deploy.sh
         env:
           DEPLOY_HOST: "${{ secrets.DEPLOY_HOST }}"
           DEPLOY_USER: "${{ secrets.DEPLOY_USER }}"
