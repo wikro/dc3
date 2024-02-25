@@ -27,7 +27,8 @@ if [ -f api.tar ]; then
 
   chmod -R ug+rwX,o+rX /opt/directus
 
-  sudo docker compose --project-directory /opt/directus up -d
+  sudo docker compose --project-directory /opt/directus up -d && \
+  sudo docker system prune --all --force
 fi
 
 # Install pocketbase
