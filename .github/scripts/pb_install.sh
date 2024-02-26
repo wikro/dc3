@@ -14,7 +14,7 @@ rm -rf /opt/pocketbase/.*
 
 cp -R deploy/pb/* /opt/pocketbase/
 
-chmod -R ug+rwX,o+rX /opt/directus
+chmod -R ug+rwX,o+rX /opt/pocketbase
 sudo systemctl reload pocketbase
 
 # Clean up
