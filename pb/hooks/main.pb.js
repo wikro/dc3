@@ -3,6 +3,6 @@ routerAdd("GET", "/gh", (c) => {
 
   $app.dao().recordQuery("gloomhaven_storyline").orderBy("created DESC").limit(1).one(latest);
 
-  return c.redirect(307, latest.get("url"));
+  return c.redirect(307, latest.getString("url"));
 });
 
