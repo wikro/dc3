@@ -1,7 +1,7 @@
 #!/bin/bash
 
 cd /tmp
-md5sum -c web.tar.md5 || exit 1
+md5sum -c pb.tar.md5 || exit 1
 
 # Temp deploy dir
 mkdir -p deploy
