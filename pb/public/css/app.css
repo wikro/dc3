@@ -9,7 +9,6 @@
 }
 
 header > h1 {
-  font-size: 3rem;
   margin: 0;
   color: var(--pico-primary-background);
 }
@@ -31,11 +30,6 @@ td {
   background-color: var(--pico-card-background-color);
 }
 
-summary {
-  font-weight: 700;
-  font-size: 1.5rem;
-}
-
 button {
   padding: 0 var(--pico-block-spacing-horizontal);
 }
@@ -43,4 +37,3 @@ button {
 button > img {
   max-width: none;
 }
-
