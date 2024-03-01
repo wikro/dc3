@@ -18,25 +18,15 @@
 
 header > h1 {
   font-size: 3rem;
+  margin: 0;
   color: var(--pico-primary-background);
-}
-
-article > header > div,
-article > main > div {
-  text-align: right;
-}
-
-article > header > div:nth-child(4n - 3),
-article > main > div:nth-child(4n - 3) {
-  text-align: left;
 }
 
 article > header,
 article > main {
-  grid-template-columns: 3fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
 }
 
-section,
 article > header,
 article > main {
   display: grid;
