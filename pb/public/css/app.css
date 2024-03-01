@@ -22,26 +22,24 @@ header > h1 {
   color: var(--pico-primary-background);
 }
 
-article > header,
-article > main {
-  grid-template-columns: 1fr 1fr 1fr;
-}
-
-article > header,
-article > main {
+tr {
   display: grid;
-  grid-column-gap: var(--pico-block-spacing-horizontal);
+  grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
-section > hgroup > button {
-  color: var(--pico-primary-inverse);
-  padding: calc(var(--pico-form-element-spacing-vertical)/2) calc(var(--pico-form-element-spacing-horizontal));
+td:last-child {
+  text-align: center;
 }
 
-button > img {
-  margin-bottom: 4px;
-  width: 48px;
-  height: 48px;
-  filter: invert(1);
+th {
+  background-color: var(--pico-card-sectioning-background-color);
 }
 
+td {
+  background-color: var(--pico-card-background-color);
+}
+
+summary {
+  font-weight: 700;
+  font-size: 1.5rem;
+}
