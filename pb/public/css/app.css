@@ -1,74 +1,57 @@
-@charset "UTF-8";
-
-@media (max-width: 576px) {
-  nav {
-    display: block;
-  }
-
-  nav > ul {
-    margin: calc(var(--pico-nav-element-spacing-horizontal) * -1);
+@media (min-width: 576px) {
+  body > header,
+  body > main,
+  body > footer {
+    max-width: 510px;
+    padding-right: 0;
+    padding-left: 0;
   }
 }
 
-nav li > h1 {
-  margin: 0;
+@media (min-width: 768px) {
+  body > header,
+  body > main,
+  body > footer {
+    max-width: 700px;
+  }
+}
+
+header > h1 {
   font-size: 3rem;
-  color: #d81b60;
+  color: var(--pico-primary-background);
 }
 
-nav li > a > img {
-  margin-bottom: 4px;
-  height: 24px;
-  color: #fff;
+article > header > div,
+article > main > div {
+  text-align: right;
 }
 
-[contenteditable="true"]:hover {
-  cursor: text;
+article > header > div:nth-child(4n - 3),
+article > main > div:nth-child(4n - 3) {
+  text-align: left;
 }
 
-.grid {
-  grid-template-columns: 1fr 1fr 1fr;
+article > header,
+article > main {
+  grid-template-columns: 3fr 1fr 1fr 1fr;
 }
 
-summary > strong {
-  margin-right: var(--pico-form-element-spacing-horizontal);
+section,
+article > header,
+article > main {
+  display: grid;
+  grid-column-gap: var(--pico-block-spacing-horizontal);
 }
 
-summary > strong.up {
-  color: var(--pico-color-jade-500);
-}
-
-summary > strong.down {
-  color: var(--pico-color-orange-500);
-}
-
-summary > strong.unknown {
-  color: var(--pico-color-zinc-500);
-}
-
-details > ul,
-details > ul li {
-  padding-left: 0;
-  margin-left: 0;
-  list-style-type: none;
-}
-
-details > ul li {
-  padding: 5px 10px 5px 10px;
-  margin-right: var(--pico-spacing);
-  margin-bottom: var(--pico-spacing);
-  display: inline-block;
-  border-radius: var(--pico-border-radius);
-  background-color: var(--pico-primary-background);
+section > hgroup > button {
   color: var(--pico-primary-inverse);
-  font-size: 0.8rem;
+  padding: calc(var(--pico-form-element-spacing-vertical)/2) calc(var(--pico-form-element-spacing-horizontal));
 }
 
-section > footer a {
-  margin-right: 10px;
-  font-size: 0.8rem;
+button > img {
+  margin-bottom: 4px;
+  width: 48px;
+  height: 48px;
+  filter: invert(1);
 }
 
-section > footer a::before {
-  content:'#';
-}

@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="img/favicon.png" />
     <link rel="stylesheet" href="css/pico.classless.pink.min.css" />
     <link rel="stylesheet" href="css/pico.colors.min.css" />
     <link rel="stylesheet" href="css/app.css" />
@@ -10,8 +11,80 @@
     <script src="js/pocketbase.umd.js"></script>
   </head>
   <body>
-    <main id="chat">
-      <p v-for="message in messages"><strong>{{ message.name }}</strong>: {{ message.text }}</p>
+    <header>
+      <h1>dc3.se | 5/3/1</h1>
+    </header>
+    <main>
+      <section>
+        <fieldset role="group">
+          <select>
+            <option selected>Week 1</option>
+            <option>Week 2</option>
+            <option>Week 3</option>
+            <option>Week 4</option>
+          </select>
+          <select>
+            <option selected>Workout 1</option>
+            <option>Workout 2</option>
+            <option>Workout 3</option>
+            <option>Workout 4</option>
+          </select>
+          <button>Edit</button>
+        </fieldset>
+      </section>
+      <section>
+        <hgroup>
+          <h3>Core</h3>
+        </hgroup>
+        <article>
+          <header>
+            <div>Exercise</div>
+            <div>Set 1RM%</div>
+            <div>Reps</div>
+            <div>Weight</div>
+          </header>
+          <main>
+            <div>Standing Shoulder Press</div>
+            <div>65%</div>
+            <div>5</div>
+            <div>32.5 kg</div>
+
+            <div>&nbsp;</div>
+            <div>75%</div>
+            <div>5</div>
+            <div>37.5 kg</div>
+
+            <div>&nbsp;</div>
+            <div>85%</div>
+            <div>5</div>
+            <div>42.5 kg</div>
+          </main>
+        </article>
+      </section>
+      <section>
+        <hgroup>
+          <h3>Assistance</h3>
+        </hgroup>
+        <article>
+          <header>
+            <div>Exercise</div>
+            <div>Sets</div>
+            <div>Reps</div>
+            <div>Weight</div>
+          </header>
+          <main>
+            <div>Dip</div>
+            <div>5</div>
+            <div>15</div>
+            <div>30 kg</div>
+
+            <div>Chin-up</div>
+            <div>5</div>
+            <div>10</div>
+            <div>20 kg</div>
+          </main>
+        </article>
+      </section>
     </main>
     <script src="js/app.js"></script>
   </body>
