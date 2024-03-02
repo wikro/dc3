@@ -1,33 +1,73 @@
+const exercises = [
+  {
+    "name": "Standing Shoulder Press",
+    "description": ""
+  },
+  {
+    "name": "Dip",
+    "description": ""
+  },
+  {
+    "name": "Chin-up",
+    "description": ""
+  }
+];
+
+const workouts = [
+  {
+    "exercises": [
+      {
+        "exercise": exercises[0],
+        "sets": [
+          { "reps": 5, "weight": 32.5 },
+          { "reps": 5, "weight": 37.5 },
+          { "reps": 5, "weight": 42.5 }
+        ]
+      },
+      {
+        "exercise": exercises[1],
+        "sets": [
+          { "reps": 15, "weight": 25.0 },
+          { "reps": 15, "weight": 25.0 },
+          { "reps": 15, "weight": 25.0 },
+          { "reps": 15, "weight": 25.0 },
+          { "reps": 15, "weight": 25.0 }
+        ]
+      },
+      {
+        "exercise": exercises[2],
+        "sets": [
+          { "reps": 10, "weight": 25.0 },
+          { "reps": 10, "weight": 25.0 },
+          { "reps": 10, "weight": 25.0 },
+          { "reps": 10, "weight": 25.0 },
+          { "reps": 10, "weight": 25.0 }
+        ]
+      }
+    ]
+  }
+];
+
+const program = {
+  "weeks": [
+    {
+      "workouts": [ workouts[0] ]
+    }
+  ]
+};
+
+getWorkout = (week_id, workout_id) => {
+  return program.weeks[week_id].workouts[workout_id];
+};
+
 const { createApp, ref } = Vue;
 
 const setup = () => {
-  const pb = new PocketBase('https://pocketbase.dc3.se');
+  const workout = ref({});
 
-  const messages = ref([]);
+  workout.value = getWorkout(0, 0);
 
-  const fetchMessages = () => {
-    pb.collection('chat').getList(1, 15, {}).then((list) => {
-      messages.value = list.items;
-    });
-  };
-
-  fetchMessages();
-
-  const newMessage = (message) => {
-    messages.value.push(message);
-
-    if (messages.value.length > 15) {
-      messages.value = messages.value.slice(1, 17);
-    };
-  };
-
-  pb.collection('chat').subscribe('*', (e) => {
-    newMessage(e.record);
-  }, {});
-
-  return { messages };
+  return { workout };
 };
 
-const app = createApp({ setup });
-
-app.mount('#chat');
+createApp({ setup }).mount('#app');
