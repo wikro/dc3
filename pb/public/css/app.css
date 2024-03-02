@@ -18,16 +18,21 @@ tr {
   grid-template-columns: 1fr 1fr 2fr 1fr;
 }
 
+tr:nth-child(2n-1) {
+  background-color: var(--pico-table-row-stripped-background-color);
+}
+
+td {
+  /*background-color: var(--pico-card-background-color);*/
+  background-color: inherit;
+}
+
 td:last-child {
   text-align: center;
 }
 
 th {
-  background-color: var(--pico-card-sectioning-background-color);
-}
-
-td {
-  background-color: var(--pico-card-background-color);
+  /*background-color: var(--pico-card-sectioning-background-color);*/
 }
 
 button {
@@ -36,4 +41,10 @@ button {
 
 button > img {
   max-width: none;
+}
+
+main > section:first-child {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  grid-column-gap: var(--pico-block-spacing-horizontal);
 }
