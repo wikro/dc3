@@ -233,8 +233,7 @@ const setup = () => {
     current_week,
     current_workout,
     setDone,
-    changeWorkout,
-    resetExercise
+    changeWorkout
   };
 };
 
