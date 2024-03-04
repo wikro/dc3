@@ -8,7 +8,7 @@
   }
 }
 
-header > h1 {
+h1 {
   margin: 0;
   color: var(--pico-primary-background);
 }
@@ -18,22 +18,32 @@ tr {
   grid-template-columns: 1fr 1fr 2fr 1fr;
 }
 
-tr:nth-child(2n-1) {
+tbody tr:nth-child(2n-1) {
   background-color: var(--pico-table-row-stripped-background-color);
 }
 
-td {
+tbody td {
   background-color: inherit;
 }
 
-td:last-child {
+tbody td:last-child {
   text-align: center;
 }
 
-button {
+tfoot td {
+  padding: var(--pico-block-spacing-vertical) 0;
+  text-align: right;
+}
+
+tfoot button {
+  padding: calc(var(--pico-block-spacing-vertical)/2)
+           calc(var(--pico-block-spacing-horizontal));
+}
+
+fieldset button {
   padding: 0 var(--pico-block-spacing-horizontal);
 }
 
-button > img {
+button img {
   max-width: none;
 }

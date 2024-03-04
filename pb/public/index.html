@@ -18,24 +18,26 @@
     </header>
     <main id="app">
       <section>
-        <select>
-          <option selected>Week 1</option>
-          <option>Week 2</option>
-          <option>Week 3</option>
-          <option>Week 4</option>
+        <select v-on:input="changeWeek">
+          <option
+            v-for="(week, weekId) in weeks"
+            v-bind:value="weekId"
+            v-bind:selected="week === current_week"
+          >Week {{ weekId + 1 }}</option>
         </select>
         <fieldset role="group">
-          <select>
-            <option selected>Workout 1</option>
-            <option>Workout 2</option>
-            <option>Workout 3</option>
-            <option>Workout 4</option>
+          <select v-on:input="changeWorkout">
+            <option
+              v-for="(workout, workoutId) in workouts"
+              v-bind:value="workoutId"
+              v-bind:selected="workout === current_workout"
+            >Workout {{ workoutId + 1 }}</option>
           </select>
           <button><img src="img/cog.svg" alt="Edit" /></button>
         </fieldset>
       </section>
-      <section v-for="exercise in workout.exercises">
-        <h4>{{ exercise.exercise.name }}</h4>
+      <section v-for="(exercise, exerciseId) in exercises" v-bind:key="exerciseId">
+        <h4>{{ exercise.name }}</h4>
         <table>
           <thead>
             <tr>
@@ -46,13 +48,28 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="(set, index) in exercise.sets">
-              <td>{{ index + 1 }}</td>
+            <tr v-for="(set, setId) in exercise.sets" v-bind:key="setId">
+              <td>{{ setId + 1 }}</td>
               <td>{{ set.reps }}</td>
               <td>{{ set.weight }}</td>
-              <td><input type="checkbox" /></td>
+              <td v-if="setId > exercise.current_set">&nbsp;</td>
+              <td v-else>
+                <input type="checkbox"
+                  v-on:input="setDone($event, exercise, setId)"
+                  v-bind:checked="setId < exercise.current_set"
+                  v-bind:disabled="setId < exercise.current_set - 1"
+                />
+              </td>
             </tr>
           </tbody>
+          <tfoot>
+            <tr>
+              <th>&nbsp;</th>
+              <th>&nbsp;</th>
+              <th>&nbsp;</th>
+              <td><button v-on:click="resetExercise($event, exercise)"><img src="img/trash.svg" alt="Reset exercise" /></button></td>
+            </tr>
+          </tfoot>
         </table>
       </section>
     </main>
