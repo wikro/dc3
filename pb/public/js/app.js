@@ -202,28 +202,21 @@ const setup = () => {
     current_week.value.current_workout = event.target.value;
   };
 
-  const resetExercise = (event, exercise) => {
-    exercise.current_set = 0;
+  const resetExercise = (event) => {
+    current_workout.value.exercises[event.target.value].current_set = 0;
   };
 
   const setDone = (event, exercise, setId) => {
-    let next_set = setId;
     const min = 0;
     const max = exercise.sets.length;
+
+    let next_set = setId;
 
     if (event.target.checked) {
       next_set = setId + 1;
     };
 
-    if (next_set < min) {
-      next_set = min;
-    };
-
-    if (next_set > max) {
-      next_set = max;
-    }
-
-    exercise.current_set = next_set;
+    exercise.current_set = Math.min(Math.max(next_set, min), max);
   };
 
   return {
