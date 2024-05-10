@@ -1,0 +1,20 @@
+[Unit]
+Description=Prometheus
+Documentation=https://prometheus.io/docs/
+
+[Service]
+Restart=always
+User=prometheus
+ExecReload=/bin/kill -HUP $MAINPID
+ExecStart=/usr/local/bin/prometheus \
+  --storage.tsdb.retention.time=7d \
+  --enable-feature=memory-snapshot-on-shutdown \
+  --config.file=/usr/local/etc/prometheus/prometheus.yml \
+  --storage.tsdb.path=/var/lib/prometheus \
+  --web.listen-address=127.0.0.1:9090 \
+  --web.console.templates=/usr/local/etc/prometheus/consoles \
+  --web.console.libraries=/usr/local/etc/prometheus/console_libraries \
+  --web.external-url=https://prometheus.dc3.se
+
+[Install]
+WantedBy=multi-user.target
