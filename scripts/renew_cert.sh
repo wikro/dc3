@@ -8,7 +8,7 @@ log_cmd () {
 }
 
 log_line '=== Renewing certificates'
-log_cmd /usr/bin/certbot renew --cert-name dc3.se --webroot -w /var/www/html
+log_cmd /usr/bin/certbot renew --webroot -w /var/www/html --cert-name dc3.se
 
 log_line '=== Reloading nginx'
 log_cmd /usr/bin/systemctl reload nginx

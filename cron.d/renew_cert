@@ -1,0 +1,1 @@
+0 23 * * 3 root [ $(date +\%d) -ge 7 ] && [ $(date +\%d) -le 14 ] && /opt/scripts/renew_cert.sh
