@@ -12,3 +12,6 @@ chmod 700 ~/.ssh
 chmod 600 ~/.ssh/known_hosts
 
 rsync --archive --delete html/ "$SSH":/var/www/html/
+
+rsync --archive nginx/nginx.conf "$SSH":/etc/nginx/nginx.conf
+ssh "$SSH" "sudo systemctl reload nginx"
