@@ -46,7 +46,7 @@ update () {
   sudo rm -vrf "/tmp/${repository}"
 }
 
-update prometheus prometheus 3.0.0 */prometheus */promtool
+update prometheus prometheus 3.0.1 */prometheus */promtool
 update prometheus alertmanager 0.27.0 */alertmanager */amtool
 update prometheus node_exporter 1.8.2 */node_exporter
 update prometheus blackbox_exporter 0.25.0 */blackbox_exporter
