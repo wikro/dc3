@@ -1,4 +1,4 @@
-name: Deploy Web
+name: Deploy
 
 on:
   workflow_dispatch:
@@ -8,6 +8,7 @@ on:
     paths:
       - "html/**"
       - "nginx/**"
+      - "scripts/**"
 
 jobs:
   deploy:
@@ -15,7 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - run: /bin/bash scripts/deploy.sh
+      - run: /bin/bash .github/scripts/deploy.sh
         env:
           DEPLOY_HOST: "${{ secrets.DEPLOY_HOST }}"
           DEPLOY_USER: "${{ secrets.DEPLOY_USER }}"
