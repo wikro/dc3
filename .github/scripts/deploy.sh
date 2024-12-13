@@ -11,8 +11,8 @@ ssh-keyscan -H "$DEPLOY_HOST" >> ~/.ssh/known_hosts
 chmod 700 ~/.ssh
 chmod 600 ~/.ssh/known_hosts
 
-rsync --archive --delete html/ "$SSH":/var/www/html/
-rsync --archive --delete scripts/ "$SSH":/opt/scripts/
+rsync --chmod D0755,F0644 --archive --delete html/ "$SSH":/var/www/html/
+rsync --chmod D0755,F0755 --archive --delete scripts/ "$SSH":/opt/scripts/
 
-rsync --archive nginx/nginx.conf "$SSH":/etc/nginx/nginx.conf
+rsync --chmod D0755,F0644 --archive nginx/nginx.conf "$SSH":/etc/nginx/nginx.conf
 ssh "$SSH" "sudo systemctl reload nginx"
