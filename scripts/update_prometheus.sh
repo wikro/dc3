@@ -6,27 +6,27 @@ log_line () {
 }
 
 update () {
-  local organisation="$1"; shift
-  local repository="$1"; shift
+  local org="$1"; shift
+  local app="$1"; shift
   local version="$1"; shift
   local binaries="$@"
 
-  local current_version=$("$repository" --version | head -n1 | cut -d" " -f3)
+  local current_version=$("$app" --version | head -n1 | cut -d" " -f3)
 
   if [ "$current_version" = "$version" ]; then
-    log_line "${organisation}/${repository}@v${version} already installed, skipping"; return
+    log_line "${org}/${app}@v${version} already installed, skipping"; return
   fi
 
-  log_line "Preparing to install ${organisation}/${repository}@v${version}"
+  log_line "Preparing to install ${org}/${app}@v${version}"
 
-  local tarball="https://github.com/${organisation}/${repository}/releases/download/v${version}/${repository}-${version}.linux-amd64.tar.gz"
+  local tarball="https://github.com/${org}/${app}/releases/download/v${version}/${app}-${version}.linux-amd64.tar.gz"
   local tarball_basename=$(basename "$tarball")
 
-  local checksums="https://github.com/${organisation}/${repository}/releases/download/v${version}/sha256sums.txt"
+  local checksums="https://github.com/${org}/${app}/releases/download/v${version}/sha256sums.txt"
   local checksums_basename=$(basename "$checksums")
  
   log_line "Creating and changing to temporary directory" 
-  sudo mkdir -vp "/tmp/${repository}" && cd "/tmp/${repository}" || exit 1
+  sudo mkdir -vp "/tmp/${app}" && cd "/tmp/${app}" || exit 1
   
   log_line "Downloading"
   sudo wget -nv "$tarball" -O "$tarball_basename" || exit 1
@@ -39,11 +39,10 @@ update () {
   sudo tar -vxzf "$tarball_basename" --strip-components 1 --wildcards -C /usr/local/bin/ $binaries || exit 1
   
   log_line "Restarting service(s)"
-  sudo systemctl restart "$repository" || (log_line "Failed to restart"; exit 1)
-  systemctl status "$repository"
+  sudo systemctl restart "$app" || (log_line "Failed to restart"; exit 1)
   
   log_line "Cleaning up"
-  sudo rm -vrf "/tmp/${repository}"
+  sudo rm -vrf "/tmp/${app}"
 }
 
 update prometheus prometheus 3.0.1 */prometheus */promtool
