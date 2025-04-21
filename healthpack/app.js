@@ -2,16 +2,24 @@ const data = {
   core: [
     { name: "Standing Shoulder Press", one_rep_max: 20 },
     { name: "Deadlift", one_rep_max: 70 },
+    { name: "Bench Press", one_rep_max: 70 },
+    { name: "Squat", one_rep_max: 70 },
   ],
   supplement: [
     { name: "Dip", sets: 5, reps: 15, weight: 20 },
     { name: "Chin-up", sets: 5, reps: 10, weight: 50 },
     { name: "Good Morning", sets: 5, reps: 12, weight: 30 },
-    { name: "Hanging Leg Raise", sets: 5, reps: 15, weight: "n/a" }
+    { name: "Hanging Leg Raise", sets: 5, reps: 15, weight: "n/a" },
+    { name: "Dumbbell Chest Press", sets: 5, reps: 15, weight: 30 },
+    { name: "Dumbbell Row", sets: 5, reps: 10, weight: 30 },
+    { name: "Leg Press", sets: 5, reps: 15, weight: 30 },
+    { name: "Leg Curl", sets: 5, reps: 10, weight: 30 },
   ],
   sessions: [
     { core: 0, supplements: [0, 1] },
-    { core: 1, supplements: [1, 2] }
+    { core: 1, supplements: [2, 3] },
+    { core: 2, supplements: [4, 5] },
+    { core: 3, supplements: [6, 7] }
   ]
 };
 
@@ -55,7 +63,7 @@ model.supplement_sets = (supplement_ids) => {
       ...supplement
     };
 
-    supplement_set.weight = Math.round(supplement_set.weight / min_weight) * min_weight;
+    supplement_set.weight = Math.round(supplement_set.weight / min_weight) * min_weight || supplement_set.weight;
 
     supplement_sets.push(supplement_set);
   }
@@ -117,7 +125,7 @@ state.update = () => {
 view.session = (session, session_id) => {
   let html = `
     <div class="session">
-      <h3>Session ${session_id}</h3>
+      <h3>Session ${parseInt(session_id) + 1}</h3>
   `;
 
   for (const exercise_id in session) {
