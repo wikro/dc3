@@ -45,6 +45,7 @@ model.core_sets = (core_id) => {
 
 model.supplement_sets = (supplement_ids) => {
   const supplement_sets = [];
+  const min_weight = 2.5;
 
   for (const supplement_id of supplement_ids) {
     const supplement = data.supplement[supplement_id];
@@ -53,6 +54,8 @@ model.supplement_sets = (supplement_ids) => {
       done: false,
       ...supplement
     };
+
+    supplement_set.weight = Math.round(supplement_set.weight / min_weight) * min_weight;
 
     supplement_sets.push(supplement_set);
   }
