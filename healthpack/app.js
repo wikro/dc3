@@ -31,17 +31,22 @@ const model = {};
 
 // ===== Model
 
+
+model.round_weight = (weight) => {
+  const min_weight = 2.5;
+  return Math.round(weight / min_weight) * min_weight;
+};
+
 model.core_sets = (core_id) => {
   const core = data.core[core_id];
   const core_sets = [];
-  const min_weight = 2.5;
 
   for (let set = 1; set <= 3; set++) {
     const core_set = {
       done: false,
       sets: 1,
       reps: 5,
-      weight: Math.round((core.one_rep_max * (0.55 + set * 0.10)) / min_weight) * min_weight,
+      weight: model.round_weight(core.one_rep_max * (0.55 + set * 0.10)),
       ...core
     };
 
@@ -53,7 +58,6 @@ model.core_sets = (core_id) => {
 
 model.supplement_sets = (supplement_ids) => {
   const supplement_sets = [];
-  const min_weight = 2.5;
 
   for (const supplement_id of supplement_ids) {
     const supplement = data.supplement[supplement_id];
@@ -63,7 +67,7 @@ model.supplement_sets = (supplement_ids) => {
       ...supplement
     };
 
-    supplement_set.weight = Math.round(supplement_set.weight / min_weight) * min_weight || supplement_set.weight;
+    supplement_set.weight = model.round_weight(supplement_set.weight) || supplement_set.weight;
 
     supplement_sets.push(supplement_set);
   }
