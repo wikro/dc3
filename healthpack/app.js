@@ -2,8 +2,6 @@ const data = {
   sessions: [
     [
       { name: "Standing Shoulder Press", sets: 1, reps: 5, weight: 20, done: false },
-      { name: "Standing Shoulder Press", sets: 1, reps: 5, weight: 25, done: false },
-      { name: "Standing Shoulder Press", sets: 1, reps: "5+", weight: 30, done: false },
       { name: "Dip", sets: 5, reps: 15, weight: 20, done: false },
       { name: "Chin-up", sets: 5, reps: 10, weight: 50, done: false }
     ]
@@ -14,13 +12,26 @@ const state = {};
 const action = {};
 const view = {};
 
-const model = {
-  sessions: data.sessions
-};
+const model = {};
 
 // ===== Model
 
+model.init = () => {
+  const proposal = {
+    model: model,
+    update: {
+      sessions: data.sessions
+    }
+  };
+
+  model.present(proposal);
+};
+
 model.present = (proposal) => {
+  if (proposal.model !== undefined) {
+    Object.assign(proposal.model, proposal.update);
+  }
+
   if (proposal.exercise !== undefined) {
     Object.assign(proposal.exercise, proposal.update);
   }
@@ -31,7 +42,7 @@ model.present = (proposal) => {
 // ===== State
 
 state.ready = () => {
-  return true;
+  return model.sessions !== undefined;
 };
 
 state.update = () => {
@@ -81,11 +92,10 @@ view.render = () => {
 
 action.toggle_done = (session_id, exercise_id) => {
   const exercise = model.sessions[session_id][exercise_id];
+
   const proposal = {
     exercise: exercise,
-    update: {
-      done: !exercise.done
-    }
+    update: { done: !exercise.done }
   };
 
   model.present(proposal);
@@ -93,4 +103,4 @@ action.toggle_done = (session_id, exercise_id) => {
 
 // ===== Init
 
-state.update();
+model.init();
