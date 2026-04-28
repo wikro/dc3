@@ -10,12 +10,6 @@ create table targets (
   labels jsonb
 );
 
-create role http_sd_public nologin;
-grant select on targets to http_sd_public;
-
-create role http_sd_backend noinherit login password '';
-grant http_sd_public to http_sd_backend;
-
 create view sd as
 select
   jsonb_agg(target) as targets,
@@ -28,3 +22,9 @@ from (
   where enabled
 )
 group by merged_labels;
+
+create role http_sd_public nologin;
+grant select on targets, sd to http_sd_public;
+
+create role http_sd_backend noinherit login password '';
+grant http_sd_public to http_sd_backend;
